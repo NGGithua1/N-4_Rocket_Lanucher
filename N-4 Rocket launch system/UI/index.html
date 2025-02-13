@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAKUJA Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Login Page Styles */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #D3D3D3;
+        }
+
+        .login-box {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-box button {
+            background-color: #87CEEB;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-box button:hover {
+            background-color: #00BFFF;
+        }
+
+        .login-box p.error {
+            color: red;
+            font-size: 14px;
+        }
+
+        /* Dashboard Styles */
+        .dashboard-container {
+            display: none;
+        }
+
+        .topnav {
+            background-color: #666a77;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+                    /* Control Buttons Styles */
+            .control-buttons {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+
+            .control-buttons button {
+                background-color: #87CEEB;
+                color: white;
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .control-buttons button:hover {
+                background-color: #00BFFF;
+            }
+
+                    .card-grid {
+                        display: grid;
+                        grid-gap: 2rem;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        max-width: 1200px;
+                        margin: 20px auto;
+                    }
+
+        .card {
+            background: white;
+            box-shadow: 2px 2px 12px rgba(140, 140, 140, 0.5);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-box">
+            <h2>NAKUJA PROJECT</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your Username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your Password" required>
+                <button type="submit">Login</button>
+                <p id="errorMsg" class="error"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container" id="dashboard">
+        <div class="topnav">
+            <h1> SOLID PROPULSION </h1>
+            <!-- Start/Stop Recording and Download Buttons -->
+                <div class="control-buttons">
+                    <button id="startRecordingBtn" onclick="startRecording()">Start Recording</button>
+                    <button id="stopRecordingBtn" onclick="stopRecording()">Stop Recording</button>
+                    <button id="downloadDataBtn" onclick="downloadData()">Download Data</button>
+                </div>
+        </div>
+        <div class="content">
+            <div class="card-grid">
+                <div class="card">
+                    <p>Temperature</p>
+                    <canvas id="gauge-temperature"></canvas>
+                </div>
+                <div class="card">
+                    <p>Pressure</p>
+                    <canvas id="gauge-Pressure"></canvas>
+                </div>
+                <div class="card">
+                    <p>Thrust</p>
+                    <canvas id="gauge-Thrust"></canvas>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
